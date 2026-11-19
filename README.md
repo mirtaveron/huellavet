@@ -25,10 +25,10 @@ El proceso manual actual implica que la recepcionista y los propios veterinarios
 - **Frecuencia y volumen:** Promedio de **30 consultas diarias** por WhatsApp (lunes a sábados, más guardia pasiva los domingos), totalizando aproximadamente **750 consultas mensuales**.
 - **Tiempo dedicado por consulta:** **6 minutos promedio** (buscar aranceles actualizados, chequear agenda, redactar el mensaje de WhatsApp, pedir datos del animal y confirmar).
 - **Tiempo total consumido al mes:**  
-  $$750 \text{ consultas} \times 6 \text{ min} = 4.500 \text{ minutos} = \mathbf{75 \text{ horas/hombre al mes}}.$$
+  `750 consultas × 6 min = 4.500 minutos` = **75 horas/hombre al mes**.
 - **Costo de la hora laboral:** Estimado en **$5.000 ARS/hora** (promedio ponderado entre personal administrativo y tiempo profesional veterinario).
 - **Costo laboral mensual del proceso manual:**  
-  $$75 \text{ horas} \times \$5.000 = \mathbf{\$375.000 \text{ ARS/mes}}.$$
+  `75 horas × $5.000` = **$375.000 ARS/mes**.
 - **Costo de oportunidad / Lucro cesante:** Las demoras de hasta 2 horas en responder mensajes generaban la pérdida estimada de 12 a 15 turnos mensuales hacia otras veterinarias de la zona, representando un lucro cesante de más de **$180.000 ARS adicionales**.
 
 ### 1.3. Costos de la Automatización y Plataforma
@@ -43,17 +43,17 @@ El proceso manual actual implica que la recepcionista y los propios veterinarios
 
 ### 1.4. Cálculo del Retorno de Inversión (ROI)
 Aplicando la fórmula oficial del curso:  
-$$\text{ROI} = \left( \frac{\text{Beneficio Neto}}{\text{Costo de Inversión}} \right) \times 100$$
+`ROI = (Beneficio Neto / Costo de Inversión) × 100`
 
-- **Ahorro bruto mensual:** $375.000 ARS.
+- **Ahorro bruto mensual:** **$375.000 ARS**.
 - **Beneficio neto mensual recurrente:**  
-  $$\$375.000 - \$12.000 = \mathbf{\$363.000 \text{ ARS/mes}}.$$
+  `$375.000 - $12.000` = **$363.000 ARS/mes**.
 - **ROI en el Primer Mes:**  
-  $$\text{ROI}_{\text{Mes 1}} = \left( \frac{\$375.000 - (\$250.000 + \$12.000)}{\$250.000 + \$12.000} \right) \times 100 = \left( \frac{\$113.000}{\$262.000} \right) \times 100 = \mathbf{+43,13\%}.$$
+  `ROI (Mes 1) = (($375.000 - ($250.000 + $12.000)) / ($250.000 + $12.000)) × 100 = ($113.000 / $262.000) × 100` = **+43,13%**.
 - **ROI mensual recurrente (desde el segundo mes):**  
-  $$\text{ROI}_{\text{Mes 2+}} = \left( \frac{\$375.000 - \$12.000}{\$12.000} \right) \times 100 = \mathbf{3.025\%}.$$
+  `ROI (Mes 2+) = (($375.000 - $12.000) / $12.000) × 100` = **3.025%**.
 - **Período de Recupero de la Inversión (Payback):**  
-  $$\text{Payback} = \frac{\text{Inversión Inicial}}{\text{Beneficio Neto Mensual}} = \frac{\$250.000}{\$363.000} = \mathbf{0,68 \text{ meses}} \approx \mathbf{20 \text{ días}}.$$
+  `Payback = Inversión Inicial / Beneficio Neto Mensual = $250.000 / $363.000` = **0,68 meses (≈ 20 días)**.
 
 ### 1.5. Por qué Escala Mejor y Límites del ROI
 - **Escalabilidad:** El sistema absorbe picos estacionales de consultas (ej. campañas de vacunación antirrábica o desparasitación en primavera) pasando de 30 a 100 consultas diarias sin incrementar el costo de personal ni degradar el tiempo de respuesta (que con los chips LPU de Groq se mantiene en < 0,6 segundos).
@@ -314,3 +314,14 @@ Recepción automática del correo en la bandeja de entrada y cuerpo HTML con niv
 
 ![Bandeja de entrada Gmail](capturas/gmail_bandeja_alerta.png)
 ![Detalle de correo HTML de derivación](capturas/gmail_detalle_derivacion.jpg)
+
+---
+
+## Licencia
+
+Este proyecto es de código abierto y está disponible para fines educativos.
+
+---
+
+*¿Preguntas o problemas? Crea un issue en el repositorio o contacta al autor.*
+
