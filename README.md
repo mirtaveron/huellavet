@@ -35,11 +35,11 @@ El proceso manual actual implica que la recepcionista y los propios veterinarios
 - **Inversión única de diseño y puesta en marcha (Setup):**  
   **$250.000 ARS** (diseño del workflow en n8n, prompt engineering estructurado, pruebas de edge cases y conexión con APIs y Google Sheets).
 - **Costo operativo mensual recurrente:**
-  - **Servidor VPS n8n (Hostinger / DigitalOcean):** $12.000 ARS/mes (~$10 USD).
+  - **Servidor VPS n8n (Hostinger / DigitalOcean):** $12.000 ARS/mes (≈ $10 USD).
   - **Consumo de API de IA (Groq Cloud con Qwen 3.8 27B):** **$0 ARS/mes** (Free Tier de Groq con inferencia LPU de ultra baja latencia, cubriendo holgadamente el volumen del negocio).
   - **Meta WhatsApp Cloud API:** Las primeras 1.000 conversaciones de servicio al cliente al mes iniciadas por el usuario son 100% bonificadas por Meta ($0 costo).
   - **Costo operativo total mensual:** **$12.000 ARS/mes**.  
-    *(Nota técnica: En caso de escalar a un modelo comercial pago como `gpt-4o-mini`, el costo de inferencia se incrementaría en solo ~$1,40 USD/mes ≈ $1.700 ARS, totalizando $13.700 ARS/mes).*
+    *(Nota técnica: En caso de escalar a un modelo comercial pago como `gpt-4o-mini`, el costo de inferencia se incrementaría en solo ≈ $1,40 USD/mes ≈ $1.700 ARS, totalizando $13.700 ARS/mes).*
 
 ### 1.4. Cálculo del Retorno de Inversión (ROI)
 Aplicando la fórmula oficial del curso:  
@@ -58,7 +58,7 @@ Aplicando la fórmula oficial del curso:
 ### 1.5. Por qué Escala Mejor y Límites del ROI
 - **Escalabilidad:** El sistema absorbe picos estacionales de consultas (ej. campañas de vacunación antirrábica o desparasitación en primavera) pasando de 30 a 100 consultas diarias sin incrementar el costo de personal ni degradar el tiempo de respuesta (que con los chips LPU de Groq se mantiene en < 0,6 segundos).
 - **Punto de inflexión donde dejaría de tener sentido automatizar (Límite del ROI):**  
-  Si el volumen de consultas descendiera por debajo de **2 consultas por día** (~50 al mes = 5 horas ahorradas = $25.000 ARS), los costos de infraestructura fija ($12.000 ARS) sumados al tiempo de supervisión técnica humana igualarían el ahorro operativo, tornando innecesario un agente cognitivo frente a una respuesta automática estática.
+  Si el volumen de consultas descendiera por debajo de **2 consultas por día** (≈ 50 al mes = 5 horas ahorradas = $25.000 ARS), los costos de infraestructura fija ($12.000 ARS) sumados al tiempo de supervisión técnica humana igualarían el ahorro operativo, tornando innecesario un agente cognitivo frente a una respuesta automática estática.
 - **Límite ético y clínico:** El agente tiene como límite estricto el acto médico veterinario: **bajo ninguna circunstancia diagnostica ni prescribe fármacos**. Si un caso requiere criterio profesional o presenta riesgo de vida, el sistema transfiere de forma inmediata al médico veterinario humano.
 
 ---
@@ -149,9 +149,9 @@ Para el agente central de HuellaVet se evaluaron exhaustivamente tres caminos de
 
 | Criterio Técnico / Comercial | 🖥️ Modelo Local (Ollama - Qwen 7B) | ⚡ Modelo en la Nube Gratis (Groq - Qwen 3.8 27B) *(ELEGIDO)* | ☁️ Modelo Comercial Pago (OpenAI - gpt-4o-mini) *(ESCALA)* |
 | :--- | :--- | :--- | :--- |
-| **Costo de Inferencia** | $0 por token (pero alta inversión en hardware) | **$0** (Free Tier de Groq) | ~$0,15 USD / 1M tokens (~$1,40 USD/mes) |
+| **Costo de Inferencia** | $0 por token (pero alta inversión en hardware) | **$0** (Free Tier de Groq) | ≈ $0,15 USD / 1M tokens (≈ $1,40 USD/mes) |
 | **Infraestructura Requerida** | PC con GPU dedicada (mínimo 8-12 GB VRAM) 24/7 | Nube gestionada por Groq (chips LPU) | Nube gestionada por OpenAI |
-| **Velocidad de Respuesta** | 8 a 15 segundos (lento en consultas concurrentes) | **0,3 a 0,6 segundos** (~450 tokens/seg) | 0,8 a 1,4 segundos |
+| **Velocidad de Respuesta** | 8 a 15 segundos (lento en consultas concurrentes) | **0,3 a 0,6 segundos** (≈ 450 tokens/seg) | 0,8 a 1,4 segundos |
 | **Precisión en Tool-Calling** | Moderada / propensa a alucinaciones de sintaxis | **Excelente** (Qwen 3.8 27B optimizado para tools) | Excelente (estándar de la industria) |
 | **SLA y Rate Limits** | Limitado al hardware local y cortes de suministro | Rate limits del Free Tier (30 req/min) | 99,9% uptime garantizado sin rate limit bajo |
 | **Privacidad y Vendor Lock-in** | 100% privado en equipo local; peso abierto | **Pesos abiertos (Open Source)**; sin atadura de proveedor | Modelo cerrado y propietario de OpenAI |
@@ -166,7 +166,7 @@ Se seleccionó como motor de producción **Qwen 3.8 (`qwen/qwen3.8-27b`)** servi
 ### 4.3. Comparativa y Plan de Escalado a Modelo Comercial Pago (`gpt-4o-mini`)
 En el informe se evaluó además el escenario de migración hacia **OpenAI `gpt-4o-mini`**:
 - **¿Cuánto costaría el salto?:**  
-  Con 750 consultas al mes (promedio de 1.100 tokens por interacción = ~2,5 millones de tokens mensuales), el costo en OpenAI sería de apenas **$1,40 USD al mes (~$1.700 ARS)**.
+  Con 750 consultas al mes (promedio de 1.100 tokens por interacción = ≈ 2,5 millones de tokens mensuales), el costo en OpenAI sería de apenas **$1,40 USD al mes (≈ $1.700 ARS)**.
 - **¿Qué beneficios concretos aportaría el pago?:**  
   1. **Eliminación de Rate Limits del Tier Gratuito:** El Free Tier de Groq tiene restricciones de TPM/RPM en el tier gratuito. Si durante una emergencia comunitaria o campaña de vacunación masiva varios tutores escriben al mismo segundo, Groq podría arrojar error `429 Too Many Requests`. OpenAI garantiza alta concurrencia comercial sostenida.
   2. **SLA Corporativo de Uptime (99,9%):** Cobertura contractual ante interrupciones de servicio y soporte técnico prioritario.
@@ -277,9 +277,9 @@ Vista panorámica del flujo real desplegado en n8n (Docker + ngrok) en sus dos r
   ![Fase 1 Entrada](capturas/n8n_fase1_entrada.png)
 - **Fase 2 — Validación y Cerebro Cognitivo (IF + AI Agent + Groq + Memoria + Parser):**  
   ![Fase 2 Agente](capturas/n8n_fase2_agente.jpg)
-- **Tool 2 — Google Sheets (`Consultar_Servicios_Precios`) en verde (`1 item`):**  
+- **Tool 1 — Google Sheets (`Consultar_Servicios_Precios`) en verde (`1 item`):**  
   ![Tool Google Sheets en verde](capturas/n8n_sheets_tool_verde.png)
-- **Tool 3 — API de Feriados (`Consultar_Feriados_Argentina`) en verde (`20 items`):**  
+- **Tool 2 — API de Feriados (`Consultar_Feriados_Argentina`) en verde (`20 items`):**  
   ![Tool API Feriados en verde](capturas/n8n_feriados_tool_verde.jpg)
 - **Defensa ante entrada multimedia/sticker (`Pedir que escriba texto` en verde):**  
   ![Fallback multimedia en n8n](capturas/n8n_fallback_multimedia.png)
